@@ -7,8 +7,8 @@ import type { Metadata } from 'next';
 dayjs.locale('ko');
 
 export const metadata: Metadata = {
-  title: 'Medusa Store',
-  description: 'Medusa Store',
+  title: 'AI Role Generator',
+  description: 'Generate AI role descriptions',
 };
 
 export default function RootLayout({
