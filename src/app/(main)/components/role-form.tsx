@@ -12,18 +12,15 @@ interface IRoleFormProps {
   handleRoleChange: (role: IRole) => void;
 }
 
-// 재귀적 타입 문제를 피하기 위해 간소화된 접근법 사용
-type Path<T> = string;
-
 const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
-  // 타입 안전한 중첩 속성 업데이트 함수
-  const updateNestedValue = <T extends unknown>(path: Path<IRole>, value: T) => {
+  // 중첩 속성 업데이트 함수
+  const updateNestedValue = <T,>(path: string, value: T) => {
     const keys = path.split('.');
-    const newRole = produce(role, (draft: any) => {
-      let current = draft;
+    const newRole = produce(role, (draft) => {
+      let current: Record<string, unknown> = draft;
       for (let i = 0; i < keys.length - 1; i++) {
         if (!current[keys[i]]) current[keys[i]] = {};
-        current = current[keys[i]];
+        current = current[keys[i]] as Record<string, unknown>;
       }
       current[keys[keys.length - 1]] = value;
     });

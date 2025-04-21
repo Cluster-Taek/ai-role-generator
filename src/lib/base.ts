@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getSession, signOut } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 
 type Body = Record<string, unknown> | Record<string, unknown>[];
@@ -13,8 +13,6 @@ interface IFetchApiArgs {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const _fetchApi = async <T = object>({ method, url, body, external }: IFetchApiArgs): Promise<T> => {
-  const session = await getSession();
-
   const externalUrl = `/api/external-proxy?url=${encodeURIComponent(url.replace('/api', '/api/v1'))}`;
 
   const response = await axios({
@@ -22,10 +20,6 @@ const _fetchApi = async <T = object>({ method, url, body, external }: IFetchApiA
     url: external ? externalUrl : `${process.env.NEXT_PUBLIC_API_URL}${url.replace('/admin-api', '/admin-api/v1')}`,
     data: method !== 'GET' ? body : undefined,
     params: method === 'GET' ? body : undefined,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${session?.user?.accessToken}`,
-    },
     withCredentials: true,
   }).catch(async (error) => {
     // Case. SSR

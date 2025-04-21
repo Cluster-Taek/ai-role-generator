@@ -9,15 +9,18 @@ interface IRolePreviewProps {
 
 const RolePreview = ({ role }: IRolePreviewProps) => {
   const { generateDescription } = useRoleDescription();
-  const description = useMemo(() => generateDescription(role), [role]);
+  const description = useMemo(() => generateDescription(role), [role, generateDescription]);
 
-  const snippets = useMemo(() => [
-    {
-      language: 'markdown',
-      code: description,
-      label: 'Role Description',
-    },
-  ], [description]);
+  const snippets = useMemo(
+    () => [
+      {
+        language: 'markdown',
+        code: description,
+        label: 'Role Description',
+      },
+    ],
+    [description]
+  );
 
   return (
     <TooltipProvider>
