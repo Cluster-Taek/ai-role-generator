@@ -2,6 +2,7 @@
 
 import RoleForm from './role-form';
 import RolePreview from './role-preview';
+import RoleTemplate from './role-template';
 import { TwoColumnPage } from '@/medusa/layout/pages/two-column-page';
 import { IRole } from '@/types/role';
 import { Container } from '@medusajs/ui';
@@ -11,18 +12,17 @@ const RoleEditor = () => {
   const [role, setRole] = useState<IRole>({
     experience: {
       years: 15,
-      level: 'Senior',
       title: 'Backend Developer',
       isArchitect: true,
+      domains: ['E-commerce', 'Logistics'],
+      specialties: [
+        'Inventory Management',
+        'Order/Payment Optimization',
+        'Shipment Tracking',
+        'Promotion Engine',
+        'Settlement System',
+      ],
     },
-    domains: ['E-commerce', 'Logistics'],
-    specialties: [
-      'Inventory Management',
-      'Order/Payment Optimization',
-      'Shipment Tracking',
-      'Promotion Engine',
-      'Settlement System',
-    ],
     techStack: {
       languages: ['Java', 'Kotlin'],
       frameworks: [
@@ -40,29 +40,27 @@ const RoleEditor = () => {
       monitoring: ['Prometheus', 'Grafana', 'DataDog'],
       tools: ['IntelliJ IDEA', 'Gradle', 'Maven', 'JUnit', 'Mockito', 'JMeter', 'SonarQube'],
     },
-    designPrinciples: ['Clean Code', 'SOLID', 'DDD', 'TDD'],
-    architecturePatterns: [
-      'Layered Architecture',
-      'Domain-Driven Design',
-      'Reactive',
-      'Event-Driven',
-      'Batch Processing',
-    ],
-    developmentApproach: {
-      style: 'Systematic',
-      includesCodeExamples: true,
-      includesTestingStrategies: true,
-      includesTradeOffs: true,
+    architecture: {
+      designPrinciples: ['Clean Code', 'SOLID', 'DDD', 'TDD'],
+      architecturePatterns: [
+        'Layered Architecture',
+        'Domain-Driven Design',
+        'Reactive',
+        'Event-Driven',
+        'Batch Processing',
+      ],
     },
-    operationalConcerns: [
-      'Peak Season Handling',
-      'Disaster Recovery',
-      'Data Consistency',
-      'Concurrent Processing',
-      'Transaction Management',
-      'Caching Strategy',
-    ],
-    deploymentStrategies: ['Zero-Downtime', 'Blue/Green', 'Canary'],
+    etc: {
+      operationalConcerns: [
+        'Peak Season Handling',
+        'Disaster Recovery',
+        'Data Consistency',
+        'Concurrent Processing',
+        'Transaction Management',
+        'Caching Strategy',
+      ],
+      deploymentStrategies: ['Zero-Downtime', 'Blue/Green', 'Canary'],
+    },
     responseStyle: {
       tone: 'Practical',
       focus: 'Implementation',
@@ -75,16 +73,23 @@ const RoleEditor = () => {
   }, []);
 
   return (
-    <div className="p-4 flex flex-col gap-3">
+    <div className="flex flex-col gap-3 p-4">
       <div className="flex flex-col gap-3">
-        <h1 className="text-2xl font-bold"> AI Role Generator</h1>
+        <h1 className="text-2xl font-bold"> AI Agent Role Generator for Vibe Coding</h1>
         <p className="text-sm text-gray-500">Generate a role description for a new role in your ai agent.</p>
       </div>
       <TwoColumnPage>
         <Container className="h-full p-0 divide-y">
           <RolePreview role={role} />
         </Container>
-        <RoleForm role={role} handleRoleChange={handleRoleChange} />
+        <div className="flex flex-col gap-2">
+          <Container className="h-full p-0 divide-y">
+            <RoleTemplate onSelect={handleRoleChange} />
+          </Container>
+          <Container className="h-full p-0 divide-y">
+            <RoleForm role={role} handleRoleChange={handleRoleChange} />
+          </Container>
+        </div>
       </TwoColumnPage>
     </div>
   );

@@ -21,11 +21,12 @@ export type HeadingProps = {
         children: React.ReactNode;
       }
   )[];
+  onClick?: () => void;
 };
 
-export const Header = ({ title, subtitle, actions = [] }: HeadingProps) => {
+export const Header = ({ title, subtitle, actions = [], onClick }: HeadingProps) => {
   return (
-    <div className="flex items-center justify-between px-6 py-4">
+    <div className="flex items-center justify-between px-6 py-4 cursor-pointer" onClick={onClick}>
       <div>
         <Heading level="h2">{title}</Heading>
         {subtitle && (
