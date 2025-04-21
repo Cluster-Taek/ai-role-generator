@@ -1,5 +1,7 @@
+import RoleEditor from './components/role-editor';
+
 const Home = () => {
-  return <div />;
+  return <RoleEditor />;
 };
 
 export default Home;

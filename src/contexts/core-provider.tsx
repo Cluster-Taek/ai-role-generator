@@ -1,7 +1,4 @@
 import AlertProvider from './alert-provider';
-import AuthProvider from './auth-provider';
-import { QueryProvider } from './query-provider';
-import SessionProvider from '@/contexts/session-provider';
 
 interface ICoreProviderProps {
   children?: React.ReactNode;
@@ -9,13 +6,9 @@ interface ICoreProviderProps {
 
 const CoreProvider = ({ children }: ICoreProviderProps) => {
   return (
-    <SessionProvider>
-      <AuthProvider>
-        <AlertProvider>
-          <QueryProvider>{children}</QueryProvider>
-        </AlertProvider>
-      </AuthProvider>
-    </SessionProvider>
+    <AlertProvider>
+      {children}
+    </AlertProvider>
   );
 };
 
