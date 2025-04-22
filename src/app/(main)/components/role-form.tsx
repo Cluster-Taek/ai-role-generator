@@ -80,7 +80,7 @@ const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
             value={
               <Input
                 type="number"
-                defaultValue={role.experience?.years ?? 0}
+                value={role.experience?.years ?? 0}
                 onChange={(e) => updateNestedValue('experience.years', Number(e.target.value))}
                 min={0}
                 max={50}
@@ -92,7 +92,7 @@ const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
             value={
               <Input
                 type="text"
-                defaultValue={role.experience?.title ?? ''}
+                value={role.experience?.title ?? ''}
                 onChange={(e) => updateNestedValue('experience.title', e.target.value)}
               />
             }
@@ -101,7 +101,7 @@ const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
             title="Is Architect"
             value={
               <Checkbox
-                defaultChecked={role.experience?.isArchitect ?? false}
+              checked={role.experience?.isArchitect ?? false}
                 onCheckedChange={(checked) => updateNestedValue('experience.isArchitect', checked)}
               />
             }
@@ -296,7 +296,7 @@ const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
             title="Includes Code Examples"
             value={
               <Checkbox
-                defaultChecked={role.developmentApproach?.includesCodeExamples ?? false}
+                checked={role.developmentApproach?.includesCodeExamples ?? false}
                 onCheckedChange={(checked) => updateNestedValue('developmentApproach.includesCodeExamples', checked)}
               />
             }
@@ -305,7 +305,7 @@ const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
             title="Includes Trade-Offs"
             value={
               <Checkbox
-                defaultChecked={role.developmentApproach?.includesTradeOffs ?? false}
+                checked={role.developmentApproach?.includesTradeOffs ?? false}
                 onCheckedChange={(checked) => updateNestedValue('developmentApproach.includesTradeOffs', checked)}
               />
             }
@@ -314,7 +314,7 @@ const RoleForm = ({ role, handleRoleChange }: IRoleFormProps) => {
             title="Includes Testing Strategies"
             value={
               <Checkbox
-                defaultChecked={role.developmentApproach?.includesTestingStrategies ?? false}
+                checked={role.developmentApproach?.includesTestingStrategies ?? false}
                 onCheckedChange={(checked) =>
                   updateNestedValue('developmentApproach.includesTestingStrategies', checked)
                 }
