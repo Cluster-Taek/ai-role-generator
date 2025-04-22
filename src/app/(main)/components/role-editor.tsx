@@ -7,6 +7,7 @@ import { TwoColumnPage } from '@/medusa/layout/pages/two-column-page';
 import { IRole } from '@/types/role';
 import { Container } from '@medusajs/ui';
 import { useCallback, useState } from 'react';
+import HowToUse from './how-to-use';
 
 const RoleEditor = () => {
   const [role, setRole] = useState<IRole>({
@@ -74,9 +75,13 @@ const RoleEditor = () => {
 
   return (
     <div className="flex flex-col gap-3 p-4">
+      <div className='flex flex-row justify-between'>
+
       <div className="flex flex-col gap-3">
         <h1 className="text-2xl font-bold"> AI Agent Role Generator for Vibe Coding</h1>
         <p className="text-sm text-gray-500">Generate a role description for a new role in your ai agent.</p>
+      </div>
+        <HowToUse />
       </div>
       <TwoColumnPage>
         <Container className="h-full p-0 divide-y">
