@@ -1,5 +1,5 @@
 import { XMarkMini } from '@medusajs/icons';
-import { Badge } from '@medusajs/ui';
+import { Badge, Tooltip, TooltipProvider } from '@medusajs/ui';
 import React, { useMemo, useState } from 'react';
 
 interface ITagInputProps {
@@ -49,7 +49,11 @@ export const TagInput = (props: ITagInputProps) => {
     <div className="flex flex-wrap items-center gap-2 mb-2">
       {value.map((tag) => (
         <Badge key={tag} className="flex items-center gap-2 truncate">
-          <p className="truncate max-w-[120px]">{tag}</p>
+          <TooltipProvider>
+            <Tooltip content={tag} delayDuration={0}>
+              <p className="truncate max-w-[120px]">{tag}</p>
+            </Tooltip>
+          </TooltipProvider>
           <XMarkMini className="cursor-pointer" onClick={() => onChange(value.filter((v) => v !== tag))} />
         </Badge>
       ))}
