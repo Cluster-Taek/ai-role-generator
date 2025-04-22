@@ -1,4 +1,4 @@
-import { Button, Container, FocusModal, Heading, Label, Text } from '@medusajs/ui';
+import { Button, Container, FocusModal, Heading, Text } from '@medusajs/ui';
 import React from 'react';
 
 //#region Styled Component
