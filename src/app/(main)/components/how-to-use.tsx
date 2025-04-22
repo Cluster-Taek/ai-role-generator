@@ -15,7 +15,7 @@ const HowToUse = () => {
       </FocusModal.Trigger>
       <FocusModal.Content>
         <FocusModal.Header />
-        <FocusModal.Body className="flex flex-col items-center py-16">
+        <FocusModal.Body className="flex flex-col items-center py-16 overflow-scroll">
           <div className="flex flex-col w-full max-w-3xl gap-y-8">
             <div className="flex flex-col gap-y-1">
               <Heading level="h3">Why use AI Agent Role Generator?</Heading>
