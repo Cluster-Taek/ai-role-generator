@@ -48,8 +48,8 @@ export const TagInput = (props: ITagInputProps) => {
   return (
     <div className="flex flex-wrap items-center gap-2 mb-2">
       {value.map((tag) => (
-        <Badge key={tag} className="flex items-center gap-2">
-          {tag}
+        <Badge key={tag} className="flex items-center gap-2 truncate">
+          <p className="truncate max-w-[120px]">{tag}</p>
           <XMarkMini className="cursor-pointer" onClick={() => onChange(value.filter((v) => v !== tag))} />
         </Badge>
       ))}

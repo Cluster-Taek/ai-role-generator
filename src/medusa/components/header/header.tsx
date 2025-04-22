@@ -36,7 +36,7 @@ export const Header = ({ title, subtitle, actions = [], onClick }: HeadingProps)
         )}
       </div>
       {actions.length > 0 && (
-        <div className="flex items-center justify-center gap-x-2">
+        <div className="flex items-center justify-end gap-2 flex-wrap">
           {actions.map((action, index) => (
             <Fragment key={index}>
               {action.type === 'button' &&
